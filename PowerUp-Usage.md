@@ -1,7 +1,7 @@
 To install this module, drop the entire Privesc folder into one of your module directories. The default PowerShell module paths are listed in the $Env:PSModulePath environment variable.
 
-The default per-user module path is: "$Env:HomeDrive$Env:HOMEPATH\Documents\WindowsPowerShell\Modules"
-The default computer-level module path is: "$Env:windir\System32\WindowsPowerShell\v1.0\Modules"
+The default per-user module path is:`"$Env:HomeDrive$Env:HOMEPATH\Documents\WindowsPowerShell\Modules"`
+The default computer-level module path is:`"$Env:windir\System32\WindowsPowerShell\v1.0\Modules"`
 
 To use the module, type `Import-Module Privesc`
 
