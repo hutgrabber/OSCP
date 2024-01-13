@@ -70,7 +70,7 @@ net use m: \\$KALI_IP\share_name # m: is just a random drive letter.
 # Ports 0-1024 require privs, do not use.
 socat -ddd TCP-LISTEN:2345,fork TCP:10.4.50.215:5432
 ```
-![[Pasted image 20240111165811.png]]
+![[./images/Pasted image 20240111165811.png]]
 
 2. Interacting with a port on one of the internal machines (PostgreSQL):
 ```bash
