@@ -1,0 +1,293 @@
+{
+  "main": {
+    "id": "183ab3d69aed38e3",
+    "type": "split",
+    "children": [
+      {
+        "id": "231ffe5b43388289",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "34e0f2d35454be10",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Article Drafts/Git For Dummies.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "0cb3ef6b8d00e302",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Article Drafts/Git For Dummies.md",
+                "mode": "preview",
+                "source": true
+              }
+            },
+            "group": "51a3f377ff369ca9"
+          }
+        ]
+      },
+      {
+        "id": "09160fdc102eb532",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6bbf54d6a94f8564",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "Article Drafts/Git For Dummies.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1.6863297827257537,
+                  "close": false
+                }
+              }
+            },
+            "group": "51a3f377ff369ca9"
+          }
+        ]
+      },
+      {
+        "id": "a02b76ce9c84da70",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6cdcbbf69f9ba0e0",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "Article Drafts/Git For Dummies.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              }
+            },
+            "group": "51a3f377ff369ca9"
+          }
+        ]
+      },
+      {
+        "id": "65ef90262e0c8029",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "879243406b1986fd",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "Article Drafts/Git For Dummies.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              }
+            },
+            "group": "51a3f377ff369ca9"
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e9e4387b1e543bec",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "44452e0568071d52",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "61ed5d3318c96960",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "44451087988b71cc",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "020cd751cded6c52",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "901f0c979ae2255d",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "9c086550faa2d257",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "Article Drafts/Git For Dummies.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "f43afcc11dc48aef",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "Article Drafts/Git For Dummies.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "c23360618c01fefe",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "Article Drafts/Git For Dummies.md"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "34e0f2d35454be10",
+  "lastOpenFiles": [
+    "Walkthroughs/HackTheBox.md",
+    "Walkthroughs/Basic Pentesting.md",
+    "README.md",
+    "Notes/Metasploit Framework.md",
+    "Check List.md",
+    "Article Drafts/Git For Dummies.md",
+    "Walkthroughs/Root Me.md",
+    "Walkthroughs/Mr. Robot.md",
+    "Tutorials/Git Basics.md",
+    "Walkthroughs/Valley.md",
+    "Walkthroughs/Weasel.md",
+    "Walkthroughs/Pickle Rick.md",
+    "Walkthroughs/Overpass One.md",
+    "Tutorials/Metasploit Framework.md",
+    "Walkthroughs/TryHackMe.md"
+  ]
+}
