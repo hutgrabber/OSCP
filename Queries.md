@@ -58,24 +58,3 @@ net use m: \\$KALI_IP\share_name # m: is just a random drive letter.
 2. Get all users in the domain > `MATCH (m:User) RETURN m34`
 3. Get all active sessions > `MATCH p = (c:Computer)-[:HasSession]->(m:User) RETURN p`
 
-# Port Forwarding Process
-1. Creating a forward on the Dual Homed Machine with SOCAT:
-```bash
-# start a socat process on the dual_homed machine
-# SOCAT WORKING
-# socat "LISTEN" and then "FORWARD"
-# socat TCP-LISTEN:$PORT,fork -- opens a port on the DH machine.
-# fork -- creates a new process.
-# TCP:$INTERNAL_TARGET_TP:$PORT -- this port should already be open.
-# Ports 0-1024 require privs, do not use.
-socat -ddd TCP-LISTEN:2345,fork TCP:10.4.50.215:5432
-```
-![[./images/Pasted image 20240111165811.png]]
-
-2. Interacting with a port on one of the internal machines (PostgreSQL):
-```bash
-# now just interact with the internal IP just like normal.
-psql -h $DH_IP -p $INTERNAL_PORT -U $USR
-# $DH_IP -- send all traffic to the dual homed machine.
-# DH Machine will forward it to the internal machine (via socat),
-```
