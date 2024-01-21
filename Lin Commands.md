@@ -2,6 +2,12 @@
 
 ---
 
+## Tips
+### Close Ports
+Ports on Linux can be closed by stopping the process that is running on that port.
+To see what ports are open, use the `ss -tulpn` command.
+If there is no `pid` attached to the open port and neither is the service listed, use the `sudo lsof -i :$PORT` to get a PID for that process.
+**Do not forget the sudo command.**
 ## Tools
 ### Gobuster
 ```bash

