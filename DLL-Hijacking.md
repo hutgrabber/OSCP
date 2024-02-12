@@ -29,9 +29,9 @@ BOOL APIENTRY DllMain(
 Compile using:
 ```bash
 # cross compile regular code:
-x86_64-w64-mingw32-gcc name_of_prg.c -o name_of_binary.exe
-# turn the output into a dynamically linked loader (DLL):
-x86_64-w64-mong32-gcc name_of_prg.cpp --shared -o name_of_DLL.dll
+	x86_64-w64-mingw32-gcc name_of_prg.c -o name_of_binary.exe
+	# turn the output into a dynamically linked loader (DLL):
+	x86_64-w64-mong32-gcc name_of_prg.cpp --shared -o name_of_DLL.dll
 ```
 
 #### Complete Process - Manual
