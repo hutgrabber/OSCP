@@ -3,11 +3,12 @@
 **Get the Ligolo Proxy and the Agent executables**
 1. On the attack machine:
 ```bash
-sudo ip tuntap adduser hutgrabber mode tun ligolo
+sudo ip tuntap add user hutgrabber mode tun ligolo
 sudo ip link set ligolo up
 ./proxy -selfcert -laddr 0.0.0.0:443 [any port and loopback]
 # in another window:
 sudo ip route add [victim subnet]/CIDR dev ligolo
+# inside the proxy
 start
 ```
 
